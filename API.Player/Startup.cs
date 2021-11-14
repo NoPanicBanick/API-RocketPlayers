@@ -28,8 +28,7 @@ namespace API.Player
                .AddEnvironmentVariables();
             var configReader = builder.ConfigurationBuilder.Build();
             var kvClient = new SecretClient(new Uri(configReader["keyvaulturl"]), new DefaultAzureCredential());
-            builder.ConfigurationBuilder.AddAzureKeyVault(kvClient, new KeyVaultSecretManager())
-                .AddJsonFile("local.settings.json", false);
+            builder.ConfigurationBuilder.AddAzureKeyVault(kvClient, new KeyVaultSecretManager());
         }
 
         /// <summary>
